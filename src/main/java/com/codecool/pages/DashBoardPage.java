@@ -87,7 +87,6 @@ public class DashBoardPage {
 
         try {
             wait.until(ExpectedConditions.visibilityOf(logoutConfirmation));
-
         }catch (TimeoutException e){
             return null;
         }
@@ -156,5 +155,9 @@ public class DashBoardPage {
         driver.findElement(By.id("delete-issue-submit")).click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@id=\"aui-flag-container\"]//span[contains(@class,'icon-close')]")));
         driver.findElement(By.xpath("//div[@id=\"aui-flag-container\"]//span[contains(@class,'icon-close')]")).click();
+    }
+
+    public void close() {
+        driver.quit();
     }
 }

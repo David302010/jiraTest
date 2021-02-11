@@ -1,5 +1,6 @@
 package com.codecool;
 
+import com.codecool.pages.CreateIssuePage;
 import com.codecool.pages.DashBoardPage;
 import com.codecool.pages.IssuesPage;
 import com.codecool.pages.LoginPage;
@@ -14,6 +15,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -21,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class TestIssues {
     private static final LoginPage loginPage = new LoginPage();
     private static final DashBoardPage dashBoardPage = new DashBoardPage();
-//    private final CreateIssuePage createIssuePage = new CreateIssuePage();
+    private final CreateIssuePage createIssuePage = new CreateIssuePage();
     private final IssuesPage issuesPage = new IssuesPage();
 
     @BeforeAll
@@ -32,8 +34,7 @@ public class TestIssues {
     @ParameterizedTest
     @CsvSource({"TOUCAN, Task"})
     public void testCreateIssue(String project, String issueType) throws InterruptedException {
-        dashBoardPage.getCreateIssueButton().click();
-
+        clickCreateButton();
         String result = issuesPage.createIssue(project, issueType, "randomString");
         boolean resultActual = issuesPage.compare(result, project);
         dashBoardPage.deleteIssueByIssueId(result);
@@ -43,7 +44,7 @@ public class TestIssues {
     @ParameterizedTest
     @MethodSource("createListOfIssueType")
     public void testIssueTypeOfProject(String project, String issueType) {
-        dashBoardPage.getCreateIssueButton().click();
+        clickCreateButton();
         String issueId = issuesPage.createIssue(project, issueType, "randomString");
         String actualIssueType = dashBoardPage.getIssueTypeByIssueId(issueId);
         dashBoardPage.deleteIssueByIssueId(issueId);
@@ -62,8 +63,18 @@ public class TestIssues {
         return argumentsList;
     }
 
+    private void clickCreateButton() {
+        try {
+            dashBoardPage.getCreateIssueButton().click();
+        } catch (NoSuchElementException nse) {
+            loginPage.loginSuccessful();
+            dashBoardPage.getCreateIssueButton().click();
+        }
+    }
+
     @AfterAll
     static void endGame() {
         dashBoardPage.logout();
+        dashBoardPage.close();
     }
 }

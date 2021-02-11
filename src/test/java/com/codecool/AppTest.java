@@ -1,6 +1,7 @@
 package com.codecool;
 
 import com.codecool.pages.*;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 
@@ -21,8 +22,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AppTest {
 
-    static LoginPage loginPage = new LoginPage();
-    DashBoardPage dashBoardPage = new DashBoardPage();
+    private static LoginPage loginPage = new LoginPage();
+    private static DashBoardPage dashBoardPage = new DashBoardPage();
     AlternateLogin alternateLogin = new AlternateLogin();
     IssuesPage issuesPage = new IssuesPage();
     CreateIssuePage createIssuePage = new CreateIssuePage();
@@ -102,5 +103,11 @@ public class AppTest {
             }
         }
         return argumentsList;
+    }
+
+    @AfterAll
+    public static void backToBase() {
+        dashBoardPage.logout();
+        dashBoardPage.close();
     }
 }
