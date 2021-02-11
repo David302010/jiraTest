@@ -80,13 +80,16 @@ public class AppTest {
 
     @ParameterizedTest
     @MethodSource("createListOfIssueType")
-    public void testIssueTypeOfProject(String project, String issueType) throws InterruptedException {
+    public void testIssueTypeAndProjectName(String project, String issueType) throws InterruptedException {
 //        loginPage.loginSuccessful();
 //        dashBoardPage.getCreateIssueButton().click();
         String issueId = createIssuePage.createNewIssue(project, issueType, "randomString");
         String actualIssueType = dashBoardPage.getIssueTypeByIssueId(issueId);
+        String actualProject = issueId.split("-")[0];
         dashBoardPage.deleteIssueByIssueId(issueId);
         assertEquals(issueType, actualIssueType);
+        assertEquals(project, actualProject);
+
     }
 
     private static List<Arguments> createListOfIssueType() {
