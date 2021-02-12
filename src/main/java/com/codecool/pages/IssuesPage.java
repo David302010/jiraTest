@@ -1,10 +1,7 @@
 package com.codecool.pages;
 
 import com.codecool.util.WebDriverSingleton;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
@@ -54,8 +51,9 @@ public class IssuesPage {
         typeInputField.click();
         typeInputField.sendKeys(issueType + Keys.TAB);
 
-        wait.until(ExpectedConditions.elementToBeClickable(summaryField));
-        summaryField.click();
+//        wait.until(ExpectedConditions.elementToBeClickable(summaryField));
+//        summaryField.click();
+        clickOnSummaryField();
         summaryField.sendKeys(text + Keys.ENTER);
 
         try {
@@ -72,6 +70,22 @@ public class IssuesPage {
 
         return id;
     }
+
+    public void clickOnSummaryField() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, 0)");
+        clickOn(summaryField);
+    }
+    protected void clickOn(WebElement webElement) {
+        waitForClickable(webElement);
+        webElement.click();
+    }
+
+    protected void waitForClickable(WebElement webElement) {
+        new WebDriverWait(driver, 3)
+                .until(ExpectedConditions.elementToBeClickable(webElement));
+    }
+
     public boolean compare(String result, String project) {
         String [] resultArray = result.split("-");
         return resultArray[0].equals(project);

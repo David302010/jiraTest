@@ -74,7 +74,6 @@ public class DashBoardPage {
         return viewProfilePage.getUserNameTitle();
     }
 
-
     public WebElement logout(){
         try {
 //            wait.until(ExpectedConditions.visibilityOf(userIcon));
@@ -88,8 +87,10 @@ public class DashBoardPage {
         try {
             wait.until(ExpectedConditions.visibilityOf(logoutConfirmation));
         }catch (TimeoutException e){
+            System.out.println("no logout confirmation?");
             return null;
         }
+
         return logoutConfirmation;
     }
 

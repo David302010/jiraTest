@@ -23,7 +23,6 @@ public class LoginPage {
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 20), this);
     }
 
-
     @FindBy(id = "login-form-username")
     private WebElement username;
 
@@ -42,18 +41,12 @@ public class LoginPage {
 
 
     public void loginSuccessful() {
-
-        driver.get("https://jira.codecool.codecanvas.hu/secure/Dashboard.jspa");
+//        driver.get("https://jira.codecool.codecanvas.hu/secure/Dashboard.jspa");
         driver.manage().window().maximize();
         try {
             wait.until(ExpectedConditions.visibilityOf(username));
-            username.sendKeys(System.getenv("JIRAUSERNAME"));
-            password.sendKeys(System.getenv("JIRAPASSWORD"));
-          /*try {
-            loginButton.click();
-        }catch (Exception e){
-            driver.findElement(By.id("login"));
-        }*/
+            username.sendKeys(System.getProperty("JIRAUSERNAME"));
+            password.sendKeys(System.getProperty("JIRAPASSWORD"));
             loginButton.click();
         } catch (Exception e ) {
             System.out.println("I'm in already");
@@ -62,14 +55,14 @@ public class LoginPage {
     }
 
     public WebElement loginFailed(String reason) throws InterruptedException {
-        driver.get("https://jira.codecool.codecanvas.hu/secure/Dashboard.jspa");
+//        driver.get("https://jira.codecool.codecanvas.hu/secure/Dashboard.jspa");
         driver.manage().window().maximize();
         if (reason.equals("wrongUsername")) {
             username.sendKeys("wrongUsername");
-            password.sendKeys(System.getenv("JIRAPASSWORD"));
+            password.sendKeys(System.getProperty("JIRAPASSWORD"));
         } else {
             Thread.sleep(3000);
-            username.sendKeys(System.getenv("JIRAUSERNAME"));
+            username.sendKeys(System.getProperty("JIRAUSERNAME"));
             password.sendKeys("wrongPassword");
         }
         loginButton.click();
@@ -81,7 +74,7 @@ public class LoginPage {
     public WebElement loginWrongPassword3Times() throws InterruptedException {
         for (int i = 0; i < 3; i++) {
             Thread.sleep(1000);
-            username.sendKeys(System.getenv("USERNAME"));
+            username.sendKeys(System.getProperty("JIRAUSERNAME"));
             password.sendKeys("wrongPassword");
             loginButton.click();
         }
