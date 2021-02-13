@@ -14,7 +14,7 @@ public class WebDriverSingleton {
         if (instance == null){
             ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
             instance = new ChromeDriver();
-            instance.get("https://jira.codecool.codecanvas.hu/secure/Dashboard.jspa");
+//            instance.get("https://jira.codecool.codecanvas.hu/secure/Dashboard.jspa");
         }
         return instance;
     }
