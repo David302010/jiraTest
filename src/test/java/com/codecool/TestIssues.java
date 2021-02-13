@@ -59,6 +59,7 @@ public class TestIssues {
     private static void tearDown() {
         dashBoardPage.logout();
         dashBoardPage.close();
+        dashBoardPage.quit();
     }
 
     private static List<Arguments> createListOfIssueType() {
