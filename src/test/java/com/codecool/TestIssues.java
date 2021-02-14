@@ -38,9 +38,9 @@ public class TestIssues {
     @ParameterizedTest
     @CsvSource({"TOUCAN, Task"})
     public void testCreateIssue(String project, String issueType) throws InterruptedException {
-        clickCreateButton();
-        String result = issuesPage.createIssue(project, issueType, "randomString");
-        boolean resultActual = issuesPage.compare(result, project);
+//        clickCreateButton();
+        String result = createIssuePage.createNewIssue(project, issueType, "randomString");
+        boolean resultActual = createIssuePage.compare(result, project);
         dashBoardPage.deleteIssueByIssueId(result);
         assertTrue(resultActual);
     }
@@ -59,6 +59,7 @@ public class TestIssues {
     private static void tearDown() {
         dashBoardPage.logout();
         dashBoardPage.close();
+        dashBoardPage.quit();
     }
 
     private static List<Arguments> createListOfIssueType() {
