@@ -41,7 +41,7 @@ public class LoginPage {
 
 
     public void loginSuccessful() {
-//        driver.get("https://jira.codecool.codecanvas.hu/secure/Dashboard.jspa");
+        driver.get("https://jira.codecool.codecanvas.hu/secure/Dashboard.jspa");
         driver.manage().window().maximize();
         try {
             wait.until(ExpectedConditions.visibilityOf(username));
@@ -55,7 +55,7 @@ public class LoginPage {
     }
 
     public WebElement loginFailed(String reason) throws InterruptedException {
-//        driver.get("https://jira.codecool.codecanvas.hu/secure/Dashboard.jspa");
+        driver.get("https://jira.codecool.codecanvas.hu/secure/Dashboard.jspa");
         driver.manage().window().maximize();
         if (reason.equals("wrongUsername")) {
             username.sendKeys("wrongUsername");

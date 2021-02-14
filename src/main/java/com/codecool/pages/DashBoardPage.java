@@ -159,6 +159,7 @@ public class DashBoardPage {
     }
 
     public void close() {
+        driver.close();
         driver.quit();
     }
 }

@@ -17,15 +17,15 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginTest {
-    private static WebDriver driver = WebDriverSingleton.getInstance();
-    private LoginPage loginPage = new LoginPage();
+//    private static WebDriver driver = WebDriverSingleton.getInstance();
+    private final LoginPage loginPage = new LoginPage();
     private static final DashBoardPage dashBoardPage =  new DashBoardPage();
     private AlternateLogin alternateLogin = new AlternateLogin();
-    private CreateIssuePage createIssuePage = new CreateIssuePage();
+//    private CreateIssuePage createIssuePage = new CreateIssuePage();
 
     @BeforeAll
     public static void setUp() {
-        driver.get("https://jira.codecool.codecanvas.hu/secure/Dashboard.jspa");
+//        driver.get("https://jira.codecool.codecanvas.hu/secure/Dashboard.jspa");
     }
 
     @ParameterizedTest
@@ -67,7 +67,7 @@ public class LoginTest {
 
     @AfterAll
     public static void tearDown() {
-        dashBoardPage.logout();
+//        dashBoardPage.logout();
         dashBoardPage.close();
     }
 }

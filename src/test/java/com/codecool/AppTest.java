@@ -24,19 +24,19 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AppTest {
-    private static WebDriver driver = WebDriverSingleton.getInstance();
+//    private static WebDriver driver = WebDriverSingleton.getInstance();
     private static LoginPage loginPage = new LoginPage();
     private static DashBoardPage dashBoardPage = new DashBoardPage();
-    AlternateLogin alternateLogin = new AlternateLogin();
-    IssuesPage issuesPage = new IssuesPage();
-    CreateIssuePage createIssuePage = new CreateIssuePage();
+//    AlternateLogin alternateLogin = new AlternateLogin();
+//    IssuesPage issuesPage = new IssuesPage();
+    private final CreateIssuePage createIssuePage = new CreateIssuePage();
 
     @BeforeAll
     public static void setUp() {
-        driver.get("https://jira.codecool.codecanvas.hu/secure/Dashboard.jspa");
+//        driver.get("https://jira.codecool.codecanvas.hu/secure/Dashboard.jspa");
         loginPage.loginSuccessful();
     }
-//    @Ignore
+
 //    @Test
 //    public void testLogout() {
 //        WebElement logoutConfirmation = dashBoardPage.logout();
@@ -111,7 +111,7 @@ public class AppTest {
 
     @AfterAll
     public static void tearDown() {
-        dashBoardPage.logout();
+//        dashBoardPage.logout();
         dashBoardPage.close();
     }
 }
