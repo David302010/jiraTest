@@ -58,7 +58,8 @@ public class LoginTest {
 
     @AfterAll
     public static void backToBase() {
-        dashBoardPage.logout();
+        dashBoardPage.logout2();
+        dashBoardPage.quit();
     }
 }
 

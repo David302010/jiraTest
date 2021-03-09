@@ -1,8 +1,6 @@
 package com.codecool.pages;
 
 import com.codecool.util.WebDriverSingleton;
-import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,9 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 
 public class LoginPage {
@@ -30,7 +25,6 @@ public class LoginPage {
     @FindBy(id = "login-form-password")
     private WebElement password;
 
-//    @FindBy(id = "login-form-submit")
     @FindBy(id = "login")
     private WebElement loginButton;
 
@@ -49,11 +43,6 @@ public class LoginPage {
             wait.until(ExpectedConditions.visibilityOf(username));
             username.sendKeys(System.getenv("JIRAUSERNAME"));
             password.sendKeys(System.getenv("JIRAPASSWORD"));
-          /*try {
-            loginButton.click();
-        }catch (Exception e){
-            driver.findElement(By.id("login"));
-        }*/
             loginButton.click();
         } catch (Exception e ) {
             System.out.println("I'm in already");

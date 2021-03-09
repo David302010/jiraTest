@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 public class AlternateLogin {
     public AlternateLogin() {
         PageFactory.initElements(driver, this);
-//        driver.navigate().to("https://jira.codecool.codecanvas.hu/login.jsp");
     }
 
     WebDriver driver = WebDriverSingleton.getInstance();

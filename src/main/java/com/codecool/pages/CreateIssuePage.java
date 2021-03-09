@@ -77,11 +77,11 @@ public class CreateIssuePage {
         summary.sendKeys(Keys.TAB);
         summary.sendKeys(Keys.ENTER);
 
-        try {
+        /*try {
             wait.until(ExpectedConditions.stalenessOf(successMessage));
         } catch (Exception e) {
             System.out.println("success message staleness");
-        }
+        }*/
         wait.until(ExpectedConditions.visibilityOf(successMessage));
         String id = getCreatedIssueId(successMessage.getText());
         System.out.println(successMessage.getText());

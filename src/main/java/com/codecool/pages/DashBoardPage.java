@@ -77,7 +77,6 @@ public class DashBoardPage {
 
     public WebElement logout(){
         try {
-//            wait.until(ExpectedConditions.visibilityOf(userIcon));
             wait.until(ExpectedConditions.elementToBeClickable(userIcon));
             userIcon.click();
             logout.click();
@@ -92,6 +91,12 @@ public class DashBoardPage {
             return null;
         }
         return logoutConfirmation;
+    }
+
+    public void logout2(){
+        wait.until(ExpectedConditions.elementToBeClickable(userIcon));
+        userIcon.click();
+        logout.click();
     }
 
     public String browseProject(String projectName){
@@ -114,7 +119,6 @@ public class DashBoardPage {
         String url = String.format("https://jira.codecool.codecanvas.hu/projects/%s", urlEnds);
         driver.get(url);
 
-//        WebDriverWait wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(locator))));
 
         String text = driver.findElement(By.xpath(locator)).getText();
@@ -151,10 +155,13 @@ public class DashBoardPage {
         driver.get(url);
         driver.findElement(By.id("opsbar-operations_more")).click();
         driver.findElement(By.xpath("//span[contains(text(),'Delete')]")).click();
-//        WebDriverWait wait = new WebDriverWait(driver,4);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("delete-issue-submit")));
         driver.findElement(By.id("delete-issue-submit")).click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@id=\"aui-flag-container\"]//span[contains(@class,'icon-close')]")));
         driver.findElement(By.xpath("//div[@id=\"aui-flag-container\"]//span[contains(@class,'icon-close')]")).click();
+    }
+
+    public void quit() {
+        driver.quit();
     }
 }

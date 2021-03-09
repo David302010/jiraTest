@@ -1,6 +1,7 @@
 package com.codecool;
 
 import com.codecool.pages.*;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 
@@ -9,6 +10,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AppTest {
 
     static LoginPage loginPage = new LoginPage();
-    DashBoardPage dashBoardPage = new DashBoardPage();
+    static DashBoardPage dashBoardPage = new DashBoardPage();
     AlternateLogin alternateLogin = new AlternateLogin();
     IssuesPage issuesPage = new IssuesPage();
     CreateIssuePage createIssuePage = new CreateIssuePage();
@@ -93,8 +95,10 @@ public class AppTest {
     }
 
     private static List<Arguments> createListOfIssueType() {
-        List<String> issueTypes = Arrays.asList("Bug", "Task", "Story", "Improvement");
-        List<String> projects = Arrays.asList("COALA", "JETI", "TOUCAN");
+        List<String> issueTypes = Arrays.asList("Bug");
+        /*List<String> issueTypes = Arrays.asList("Bug", "Task", "Story", "Improvement");
+        List<String> projects = Arrays.asList("COALA", "JETI", "TOUCAN");*/
+        List<String> projects = Arrays.asList("COALA");
         List<Arguments> argumentsList = new ArrayList<>();
         for (String project : projects) {
             for (String type : issueTypes) {
@@ -102,5 +106,11 @@ public class AppTest {
             }
         }
         return argumentsList;
+    }
+
+    @AfterAll
+    static void endGame() {
+        dashBoardPage.logout();
+        //dashBoardPage.quit();
     }
 }
