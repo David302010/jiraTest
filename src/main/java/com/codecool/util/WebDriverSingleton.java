@@ -20,7 +20,7 @@ public class WebDriverSingleton {
             instance = new FirefoxDriver();*/
             WebDriverManager.chromedriver().setup();
             instance = new ChromeDriver();
-            instance.get("https://jira.codecool.codecanvas.hu/secure/Dashboard.jspa");
+//            instance.get("https://jira.codecool.codecanvas.hu/secure/Dashboard.jspa");
         }
         return instance;
     }

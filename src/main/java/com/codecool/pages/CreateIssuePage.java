@@ -49,7 +49,6 @@ public class CreateIssuePage {
         dropdown.click();
         dropdown.sendKeys(project);
         dropdown.sendKeys(Keys.TAB);
-
 //        cancel.click();
 
         try {

@@ -88,6 +88,7 @@ public class DashBoardPage {
             wait.until(ExpectedConditions.visibilityOf(logoutConfirmation));
 
         }catch (TimeoutException e){
+            System.out.println("no logout confirmation?");
             return null;
         }
         return logoutConfirmation;
@@ -161,7 +162,11 @@ public class DashBoardPage {
         driver.findElement(By.xpath("//div[@id=\"aui-flag-container\"]//span[contains(@class,'icon-close')]")).click();
     }
 
+    public void close() {
+//        driver.close();
+    }
+
     public void quit() {
-        driver.quit();
+//        driver.quit();
     }
 }

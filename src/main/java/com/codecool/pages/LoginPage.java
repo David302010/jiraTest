@@ -1,6 +1,8 @@
 package com.codecool.pages;
 
 import com.codecool.util.WebDriverSingleton;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,7 +19,6 @@ public class LoginPage {
     public LoginPage() {
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 20), this);
     }
-
 
     @FindBy(id = "login-form-username")
     private WebElement username;

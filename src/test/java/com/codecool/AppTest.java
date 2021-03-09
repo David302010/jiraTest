@@ -2,6 +2,9 @@ package com.codecool;
 
 import com.codecool.pages.*;
 import org.junit.jupiter.api.AfterAll;
+import com.codecool.util.WebDriverSingleton;
+import org.junit.Ignore;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 
@@ -109,8 +112,8 @@ public class AppTest {
     }
 
     @AfterAll
-    static void endGame() {
+    public static void tearDown() {
         dashBoardPage.logout();
-        //dashBoardPage.quit();
+        dashBoardPage.close();
     }
 }
