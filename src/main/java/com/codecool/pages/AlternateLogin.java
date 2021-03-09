@@ -26,8 +26,8 @@ public class AlternateLogin {
 //        driver.navigate().to("https://jira.codecool.codecanvas.hu/login.jsp");
         driver.get("https://jira.codecool.codecanvas.hu/login.jsp");
         driver.manage().window().maximize();
-        username.sendKeys(System.getProperty("JIRAUSERNAME"));
-        password.sendKeys(System.getProperty("JIRAPASSWORD"));
+        username.sendKeys(System.getenv("JIRAUSERNAME"));
+        password.sendKeys(System.getenv("JIRAPASSWORD"));
         loginButton.click();
     }
 }
